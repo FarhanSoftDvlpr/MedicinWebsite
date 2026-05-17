@@ -28,23 +28,23 @@ namespace MEDICINE.WEB.Data
             base.OnModelCreating(modelBuilder);
 
             /*
-                ROLE UNIQUE KEY
+                UNIQUE INDEXES
             */
 
             modelBuilder.Entity<Role>()
                 .HasIndex(x => x.RoleKey)
                 .IsUnique();
 
-            /*
-                PERMISSION UNIQUE KEY
-            */
-
             modelBuilder.Entity<Permission>()
                 .HasIndex(x => x.PermissionKey)
                 .IsUnique();
 
+            modelBuilder.Entity<AdminUser>()
+                .HasIndex(x => x.Email)
+                .IsUnique();
+
             /*
-                ROLE PERMISSION COMPOSITE KEY
+                COMPOSITE KEYS
             */
 
             modelBuilder.Entity<RolePermission>()
@@ -54,16 +54,41 @@ namespace MEDICINE.WEB.Data
                     x.PermissionId
                 });
 
-            /*
-                ADMIN USER ROLE COMPOSITE KEY
-            */
-
             modelBuilder.Entity<AdminUserRole>()
                 .HasKey(x => new
                 {
                     x.AdminUserId,
                     x.RoleId
                 });
+        }
+
+        public override Task<int> SaveChangesAsync(
+            CancellationToken cancellationToken = default)
+        {
+            var entries = ChangeTracker
+                .Entries()
+                .Where(e =>
+                    e.Entity is Common.BaseEntity &&
+                    (
+                        e.State == EntityState.Added ||
+                        e.State == EntityState.Modified
+                    ));
+
+            foreach (var entityEntry in entries)
+            {
+                var entity = (Common.BaseEntity)entityEntry.Entity;
+
+                if (entityEntry.State == EntityState.Added)
+                {
+                    entity.CreatedAt = DateTime.UtcNow;
+                }
+                else
+                {
+                    entity.UpdatedAt = DateTime.UtcNow;
+                }
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }
