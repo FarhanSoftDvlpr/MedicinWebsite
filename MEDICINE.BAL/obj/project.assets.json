@@ -1,0 +1,158 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "MEDICINE.COMMON/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MEDICINE.COMMON.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MEDICINE.COMMON.dll": {}
+        }
+      },
+      "MEDICINE.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MEDICINE.COMMON": "1.0.0",
+          "MEDICINE.MODEL": "1.0.0",
+          "MEDICINE.REPOSITORY": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MEDICINE.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MEDICINE.DAL.dll": {}
+        }
+      },
+      "MEDICINE.MODEL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MEDICINE.MODEL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MEDICINE.MODEL.dll": {}
+        }
+      },
+      "MEDICINE.REPOSITORY/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MEDICINE.REPOSITORY.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MEDICINE.REPOSITORY.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MEDICINE.COMMON/1.0.0": {
+      "type": "project",
+      "path": "../MEDICINE.COMMON/MEDICINE.COMMON.csproj",
+      "msbuildProject": "../MEDICINE.COMMON/MEDICINE.COMMON.csproj"
+    },
+    "MEDICINE.DAL/1.0.0": {
+      "type": "project",
+      "path": "../MEDICINE.DAL/MEDICINE.DAL.csproj",
+      "msbuildProject": "../MEDICINE.DAL/MEDICINE.DAL.csproj"
+    },
+    "MEDICINE.MODEL/1.0.0": {
+      "type": "project",
+      "path": "../MEDICINE.MODEL/MEDICINE.MODEL.csproj",
+      "msbuildProject": "../MEDICINE.MODEL/MEDICINE.MODEL.csproj"
+    },
+    "MEDICINE.REPOSITORY/1.0.0": {
+      "type": "project",
+      "path": "../MEDICINE.REPOSITORY/MEDICINE.REPOSITORY.csproj",
+      "msbuildProject": "../MEDICINE.REPOSITORY/MEDICINE.REPOSITORY.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "MEDICINE.COMMON >= 1.0.0",
+      "MEDICINE.DAL >= 1.0.0",
+      "MEDICINE.MODEL >= 1.0.0",
+      "MEDICINE.REPOSITORY >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Projects\\MEDICINE\\MEDICINE.BAL\\MEDICINE.BAL.csproj",
+      "projectName": "MEDICINE.BAL",
+      "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.BAL\\MEDICINE.BAL.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\MEDICINE\\MEDICINE.BAL\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj": {
+              "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj"
+            },
+            "D:\\Projects\\MEDICINE\\MEDICINE.DAL\\MEDICINE.DAL.csproj": {
+              "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.DAL\\MEDICINE.DAL.csproj"
+            },
+            "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj": {
+              "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj"
+            },
+            "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj": {
+              "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Projects\\MEDICINE\\MEDICINE.BAL\\MEDICINE.BAL.csproj": {}
+  },
+  "projects": {
+    "D:\\Projects\\MEDICINE\\MEDICINE.BAL\\MEDICINE.BAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEDICINE\\MEDICINE.BAL\\MEDICINE.BAL.csproj",
+        "projectName": "MEDICINE.BAL",
+        "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.BAL\\MEDICINE.BAL.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEDICINE\\MEDICINE.BAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj": {
+                "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj"
+              },
+              "D:\\Projects\\MEDICINE\\MEDICINE.DAL\\MEDICINE.DAL.csproj": {
+                "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.DAL\\MEDICINE.DAL.csproj"
+              },
+              "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj": {
+                "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj"
+              },
+              "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj": {
+                "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj",
+        "projectName": "MEDICINE.COMMON",
+        "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\MEDICINE\\MEDICINE.DAL\\MEDICINE.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEDICINE\\MEDICINE.DAL\\MEDICINE.DAL.csproj",
+        "projectName": "MEDICINE.DAL",
+        "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.DAL\\MEDICINE.DAL.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEDICINE\\MEDICINE.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj": {
+                "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.COMMON\\MEDICINE.COMMON.csproj"
+              },
+              "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj": {
+                "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj"
+              },
+              "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj": {
+                "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj",
+        "projectName": "MEDICINE.MODEL",
+        "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\MEDICINE.MODEL.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEDICINE\\MEDICINE.MODEL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj",
+        "projectName": "MEDICINE.REPOSITORY",
+        "projectPath": "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\MEDICINE.REPOSITORY.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEDICINE\\MEDICINE.REPOSITORY\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
