@@ -1,0 +1,145 @@
+﻿@model List<MEDICINE.WEB.Models.Role>
+
+@{
+    ViewData["Title"] = "Roles Management";
+}
+
+<div class="page-header">
+
+    <div>
+        <h2 class="page-title">
+            Roles Management
+        </h2>
+
+        <p class="page-subtitle">
+            Manage admin roles and permissions
+        </p>
+    </div>
+
+    <div>
+        <a href="/Admin/Roles/Create"
+           class="btn btn-primary">
+
+            <i class="fas fa-plus"></i>
+
+            Create Role
+        </a>
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Role Name
+                    </th>
+
+                    <th>
+                        Role Key
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Created At
+                    </th>
+
+                    <th width="150">
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @if (Model.Count > 0)
+                {
+                    foreach (var role in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @role.Id
+                            </td>
+
+                            <td>
+                                @role.Name
+                            </td>
+
+                            <td>
+                                @role.RoleKey
+                            </td>
+
+                            <td>
+
+                                @if (role.IsActive)
+                                {
+                                    <span class="badge bg-success">
+                                        Active
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">
+                                        Inactive
+                                    </span>
+                                }
+
+                            </td>
+
+                            <td>
+                                @role.CreatedAt.ToString("dd MMM yyyy")
+                            </td>
+
+                            <td>
+
+                                <a href="/Admin/Roles/Edit/@role.Id"
+                                   class="btn btn-sm btn-warning">
+
+                                    <i class="fas fa-edit"></i>
+
+                                    Edit
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+
+                        <td colspan="6"
+                            class="text-center">
+
+                            No roles found.
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

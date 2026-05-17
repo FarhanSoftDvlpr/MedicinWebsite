@@ -1,6 +1,8 @@
-﻿namespace MEDICINE.WEB.Models
+﻿using MEDICINE.WEB.Common;
+
+namespace MEDICINE.WEB.Models
 {
-    public class Permission
+    public class Permission : BaseEntity
     {
         public int Id { get; set; }
 

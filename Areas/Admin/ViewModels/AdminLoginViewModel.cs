@@ -1,0 +1,17 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MEDICINE.WEB.Areas.Admin.ViewModels
+{
+    public class AdminLoginViewModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
+
+    }
+}
