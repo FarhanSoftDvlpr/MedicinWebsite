@@ -1,0 +1,11 @@
+D:\Projects\MEDICINE\MEDICINE.COMMON\bin\Debug\net8.0\MEDICINE.COMMON.deps.json
+D:\Projects\MEDICINE\MEDICINE.COMMON\bin\Debug\net8.0\MEDICINE.COMMON.dll
+D:\Projects\MEDICINE\MEDICINE.COMMON\bin\Debug\net8.0\MEDICINE.COMMON.pdb
+D:\Projects\MEDICINE\MEDICINE.COMMON\obj\Debug\net8.0\MEDICINE.COMMON.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\MEDICINE\MEDICINE.COMMON\obj\Debug\net8.0\MEDICINE.COMMON.AssemblyInfoInputs.cache
+D:\Projects\MEDICINE\MEDICINE.COMMON\obj\Debug\net8.0\MEDICINE.COMMON.AssemblyInfo.cs
+D:\Projects\MEDICINE\MEDICINE.COMMON\obj\Debug\net8.0\MEDICINE.COMMON.csproj.CoreCompileInputs.cache
+D:\Projects\MEDICINE\MEDICINE.COMMON\obj\Debug\net8.0\MEDICINE.COMMON.dll
+D:\Projects\MEDICINE\MEDICINE.COMMON\obj\Debug\net8.0\refint\MEDICINE.COMMON.dll
+D:\Projects\MEDICINE\MEDICINE.COMMON\obj\Debug\net8.0\MEDICINE.COMMON.pdb
+D:\Projects\MEDICINE\MEDICINE.COMMON\obj\Debug\net8.0\ref\MEDICINE.COMMON.dll
