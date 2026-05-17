@@ -1,0 +1,41 @@
+﻿<div class="topbar">
+
+    <div class="topbar-left">
+
+        <button class="menu-toggle" id="menu-toggle">
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
+        <h4 class="page-title">
+            Admin Dashboard
+        </h4>
+
+    </div>
+
+    <div class="topbar-right">
+
+        <div class="admin-info">
+
+            <i class="fas fa-user-circle"></i>
+
+            <span>
+                Welcome
+                @User.Identity.Name
+            </span>
+
+        </div>
+
+        <a asp-area="Admin"
+           asp-controller="Account"
+           asp-action="Logout"
+           class="btn btn-danger btn-sm">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</div>

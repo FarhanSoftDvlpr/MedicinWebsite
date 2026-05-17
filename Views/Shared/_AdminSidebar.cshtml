@@ -1,0 +1,37 @@
+﻿@using MEDICINE.WEB.Services.Admin
+@inject AdminNavigationService NavigationService
+
+<div class="sidebar">
+
+    <div class="logo-section">
+
+        <h3 class="logo-text">
+            MEDICINE
+        </h3>
+
+    </div>
+
+    @{
+        var menus = NavigationService.GetMenu(User);
+    }
+
+    <ul class="sidebar-menu">
+
+        @foreach (var menu in menus)
+        {
+            <li>
+                <a href="@menu.Url">
+
+                    <i class="@menu.Icon"></i>
+
+                    <span>
+                        @menu.Title
+                    </span>
+
+                </a>
+            </li>
+        }
+
+    </ul>
+
+</div>

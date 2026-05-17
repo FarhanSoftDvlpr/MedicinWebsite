@@ -1,0 +1,58 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MEDICINE.DAL/1.0.0": {
+        "dependencies": {
+          "MEDICINE.COMMON": "1.0.0",
+          "MEDICINE.MODEL": "1.0.0",
+          "MEDICINE.REPOSITORY": "1.0.0"
+        },
+        "runtime": {
+          "MEDICINE.DAL.dll": {}
+        }
+      },
+      "MEDICINE.COMMON/1.0.0": {
+        "runtime": {
+          "MEDICINE.COMMON.dll": {}
+        }
+      },
+      "MEDICINE.MODEL/1.0.0": {
+        "runtime": {
+          "MEDICINE.MODEL.dll": {}
+        }
+      },
+      "MEDICINE.REPOSITORY/1.0.0": {
+        "runtime": {
+          "MEDICINE.REPOSITORY.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MEDICINE.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MEDICINE.COMMON/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MEDICINE.MODEL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MEDICINE.REPOSITORY/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
