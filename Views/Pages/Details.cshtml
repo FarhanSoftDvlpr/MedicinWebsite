@@ -1,0 +1,39 @@
+﻿@model MEDICINE.WEB.ViewModels.CmsPages.PublicCmsPageViewModel
+
+@{
+    ViewData["Title"] = Model.MetaTitleEn ?? Model.TitleEn;
+}
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="fw-bold">@Model.TitleEn</h1>
+
+            @if (!string.IsNullOrWhiteSpace(Model.TitleAr))
+            {
+                <h2 class="fw-bold mt-3" dir="rtl">
+                    @Model.TitleAr
+                </h2>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="cms-content mb-5">
+            @Html.Raw(Model.DescriptionEn)
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.DescriptionAr))
+        {
+            <hr />
+
+            <div class="cms-content mt-5" dir="rtl" style="text-align:right;">
+                @Html.Raw(Model.DescriptionAr)
+            </div>
+        }
+
+    </div>
+</section>

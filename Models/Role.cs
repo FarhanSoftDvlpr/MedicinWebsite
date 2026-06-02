@@ -4,8 +4,6 @@ namespace MEDICINE.WEB.Models
 {
     public class Role : BaseEntity
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public string RoleKey { get; set; }
@@ -14,17 +12,18 @@ namespace MEDICINE.WEB.Models
 
         public bool IsActive { get; set; }
 
-        public bool IsDeleted { get; set; }
-
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
-
         // Navigation Properties
 
-        public ICollection<RolePermission> RolePermissions { get; set; }
+        public ICollection<RolePermission> RolePermissions
+        {
+            get;
+            set;
+        } = new List<RolePermission>();
 
-        public ICollection<AdminUserRole> AdminUserRoles { get; set; }
-
+        public ICollection<AdminUserRole> AdminUserRoles
+        {
+            get;
+            set;
+        } = new List<AdminUserRole>();
     }
 }

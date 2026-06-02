@@ -1,0 +1,87 @@
+﻿@model IEnumerable<MEDICINE.WEB.ViewModels.Testimonials.PublicTestimonialViewModel>
+
+@{
+    ViewData["Title"] = "Patient Success Stories";
+}
+
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <h1 class="fw-bold">
+            Patient Success Stories
+        </h1>
+
+        <p class="text-muted">
+            Real experiences from patients who trusted us for their treatment journey.
+        </p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card h-100 shadow-sm border-0">
+
+                        <div class="card-body text-center">
+
+                            @if (!string.IsNullOrWhiteSpace(item.ImagePath))
+                            {
+                                <img src="@item.ImagePath"
+                                     class="mb-3"
+                                     style="width:95px;height:95px;object-fit:cover;border-radius:50%;" />
+                            }
+
+                            <h5 class="fw-bold mb-1">
+                                @item.PatientNameEn
+                            </h5>
+
+                            @if (!string.IsNullOrWhiteSpace(item.CountryEn))
+                            {
+                                <p class="text-muted mb-1">
+                                    @item.CountryEn
+                                </p>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(item.TreatmentNameEn))
+                            {
+                                <span class="badge bg-primary mb-3">
+                                    @item.TreatmentNameEn
+                                </span>
+                            }
+
+                            <div class="mb-3">
+                                @for (int i = 1; i <= item.Rating; i++)
+                                {
+                                    <span>⭐</span>
+                                }
+                            </div>
+
+                            <p>
+                                @item.StoryEn
+                            </p>
+
+                            @if (!string.IsNullOrWhiteSpace(item.VideoUrl))
+                            {
+                                <a href="@item.VideoUrl"
+                                   target="_blank"
+                                   class="btn btn-outline-primary btn-sm">
+                                    Watch Video
+                                </a>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+</section>

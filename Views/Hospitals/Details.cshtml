@@ -1,0 +1,181 @@
+﻿@model MEDICINE.WEB.ViewModels.Hospitals.HospitalDetailsViewModel
+
+@{
+    ViewData["Title"] = Model.Hospital.NameEn;
+}
+
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <h1 class="fw-bold">@Model.Hospital.NameEn</h1>
+
+        <p class="lead mb-0">
+            @Model.Hospital.CityMaster?.NameEn
+            @if (Model.Hospital.CityMaster != null && Model.Hospital.CountryMaster != null)
+            {
+                <span>, </span>
+            }
+            @Model.Hospital.CountryMaster?.NameEn
+        </p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
+
+        <div class="row g-4">
+
+            <div class="col-lg-8">
+
+                @if (!string.IsNullOrEmpty(Model.Hospital.ImagePath))
+                {
+                    <img src="@Model.Hospital.ImagePath"
+                         class="img-fluid rounded shadow-sm mb-4" />
+                }
+
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="fw-bold mb-3">About Hospital</h3>
+
+                        @if (!string.IsNullOrEmpty(Model.Hospital.DescriptionEn))
+                        {
+                            @Html.Raw(Model.Hospital.DescriptionEn)
+                        }
+                        else
+                        {
+                            <p>@Model.Hospital.ShortDescriptionEn</p>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.Hospital.AddressEn))
+                        {
+                            <hr />
+                            <h5 class="fw-bold">Address</h5>
+                            <p class="mb-0">@Model.Hospital.AddressEn</p>
+                        }
+                    </div>
+                </div>
+
+                @if (Model.Doctors != null && Model.Doctors.Any())
+                {
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="fw-bold mb-4">Top Doctors in @Model.Hospital.NameEn</h3>
+
+                            <div class="row g-4">
+                                @foreach (var doctor in Model.Doctors)
+                                {
+                                    <div class="col-md-6">
+                                        <div class="border rounded p-3 h-100">
+
+                                            @if (!string.IsNullOrEmpty(doctor.ImagePath))
+                                            {
+                                                <img src="@doctor.ImagePath"
+                                                     class="img-fluid rounded mb-3"
+                                                     style="height:180px;width:100%;object-fit:cover;" />
+                                            }
+
+                                            <h5 class="fw-bold">@doctor.FullNameEn</h5>
+
+                                            @if (!string.IsNullOrEmpty(doctor.DesignationEn))
+                                            {
+                                                <p class="text-muted mb-1">@doctor.DesignationEn</p>
+                                            }
+
+                                            <p class="mb-2">
+                                                Experience: @doctor.ExperienceYears Years
+                                            </p>
+
+                                            <a asp-controller="Doctors"
+                                               asp-action="Details"
+                                               asp-route-id="@doctor.Id"
+                                               class="btn btn-outline-primary btn-sm">
+                                                View Doctor
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="card shadow-sm border-0 sticky-top" style="top:90px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Get Free Medical Opinion</h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form asp-controller="PublicInquiry"
+                              asp-action="QuickSubmit"
+                              method="post">
+
+                            @Html.AntiForgeryToken()
+
+                            <input type="hidden" name="HospitalId" value="@Model.Hospital.Id" />
+                            <input type="hidden" name="SourcePage" value="Hospital Details - @Model.Hospital.NameEn" />
+
+                            <div class="mb-3">
+                                <label class="form-label">Patient Name</label>
+                                <input type="text"
+                                       name="PatientName"
+                                       class="form-control"
+                                       required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="text"
+                                       name="MobileNumber"
+                                       class="form-control"
+                                       required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email"
+                                       name="Email"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea name="Message"
+                                          class="form-control"
+                                          rows="3"
+                                          placeholder="Tell us your treatment requirement"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                Submit Inquiry
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

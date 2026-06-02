@@ -1,8 +1,602 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model MEDICINE.WEB.ViewModels.Home.HomePageViewModel
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Dynamic Banner Section -->
+@if (Model.Banners != null && Model.Banners.Any())
+{
+    var banner = Model.Banners.First();
+
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold">@banner.TitleEn</h1>
+
+                    @if (!string.IsNullOrEmpty(banner.SubTitleEn))
+                    {
+                        <p class="lead mt-3">@banner.SubTitleEn</p>
+                    }
+
+                    <div class="mt-4">
+                        @if (!string.IsNullOrEmpty(banner.ButtonTextEn) && !string.IsNullOrEmpty(banner.ButtonUrl))
+                        {
+                            <a href="@banner.ButtonUrl" class="btn btn-light btn-lg me-2">
+                                @banner.ButtonTextEn
+                            </a>
+                        }
+
+                        <a href="https://wa.me/979690012794" target="_blank" class="btn btn-success btn-lg">
+                            WhatsApp Us
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 text-center">
+                    <img src="@banner.ImagePath"
+                         alt="@banner.TitleEn"
+                         class="img-fluid rounded shadow">
+                </div>
+
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <h1>World-Class Medical Treatment in India</h1>
+            <p class="lead">Complete medical travel care for international patients.</p>
+            <a href="/PublicInquiry/Contact" class="btn btn-light btn-lg">Book Free Consultation</a>
+        </div>
+    </section>
+}
+
+<!-- Featured Treatments -->
+<section class="py-5">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2>Popular Treatments</h2>
+            <p>Explore top medical treatments available in India</p>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var treatment in Model.FeaturedTreatments)
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+
+                        @if (!string.IsNullOrEmpty(treatment.ImagePath))
+                        {
+                            <img src="@treatment.ImagePath"
+                                 class="card-img-top"
+                                 style="height:200px;object-fit:cover;"
+                                 alt="@treatment.NameEn">
+                        }
+
+                        <div class="card-body">
+                            <h5>@treatment.NameEn</h5>
+
+                            @if (!string.IsNullOrEmpty(treatment.ShortDescriptionEn))
+                            {
+                                <p>@treatment.ShortDescriptionEn</p>
+                            }
+
+                            <a href="/Treatments/Details/@treatment.Id" class="btn btn-outline-primary">
+                                View Details
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+<!-- Featured Hospitals -->
+<section class="py-5 bg-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2>Featured Hospitals</h2>
+            <p>Trusted hospitals for international patients</p>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var hospital in Model.FeaturedHospitals)
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+
+                        @if (!string.IsNullOrEmpty(hospital.ImagePath))
+                        {
+                            <img src="@hospital.ImagePath"
+                                 class="card-img-top"
+                                 style="height:200px;object-fit:cover;"
+                                 alt="@hospital.NameEn">
+                        }
+
+                        <div class="card-body">
+                            <h5>@hospital.NameEn</h5>
+
+                            @if (!string.IsNullOrEmpty(hospital.ShortDescriptionEn))
+                            {
+                                <p>@hospital.ShortDescriptionEn</p>
+                            }
+
+                            <a href="/Hospitals/Details/@hospital.Id" class="btn btn-outline-primary">
+                                View Details
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+<!-- Featured Doctors -->
+<section class="py-5">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2>Featured Doctors</h2>
+            <p>Consult with experienced medical specialists</p>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var doctor in Model.FeaturedDoctors)
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center">
+
+                        @if (!string.IsNullOrEmpty(doctor.ImagePath))
+                        {
+                            <img src="@doctor.ImagePath"
+                                 class="card-img-top"
+                                 style="height:240px;object-fit:cover;"
+                                 alt="@doctor.FullNameEn">
+                        }
+
+                        <div class="card-body">
+                            <h5>@doctor.FullNameEn</h5>
+
+                            @if (!string.IsNullOrEmpty(doctor.DesignationEn))
+                            {
+                                <p class="text-muted">@doctor.DesignationEn</p>
+                            }
+
+                            <p>@doctor.ExperienceYears Years Experience</p>
+
+                            <a href="/Doctors/Details/@doctor.Id" class="btn btn-outline-primary">
+                                View Profile
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            }            
+        </div>
+
+    </div>
+</section>
+@if (Model.FeaturedTestimonials != null &&
+     Model.FeaturedTestimonials.Any())
+{
+    <section class="py-5 bg-light">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <h2 class="fw-bold">
+                    Patient Success Stories
+                </h2>
+
+                <p class="text-muted">
+                    Trusted by patients from around the world.
+                </p>
+
+            </div>
+
+            <div class="row">
+
+                @foreach (var item in Model.FeaturedTestimonials)
+                {
+                    <div class="col-lg-4 mb-4">
+
+                        <div class="card h-100 shadow-sm border-0">
+
+                            <div class="card-body text-center">
+
+                                @if (!string.IsNullOrWhiteSpace(item.ImagePath))
+                                {
+                                    <img src="@item.ImagePath"
+                                         style="width:90px;height:90px;border-radius:50%;object-fit:cover;"
+                                         class="mb-3" />
+                                }
+
+                                <h5>
+                                    @item.PatientNameEn
+                                </h5>
+
+                                <p class="text-muted">
+                                    @item.CountryEn
+                                </p>
+
+                                @if (!string.IsNullOrWhiteSpace(item.TreatmentNameEn))
+                                {
+                                    <span class="badge bg-primary mb-3">
+                                        @item.TreatmentNameEn
+                                    </span>
+                                }
+
+                                <div class="mb-3">
+                                    @for (int i = 1; i <= item.Rating; i++)
+                                    {
+                                        <span>⭐</span>
+                                    }
+                            </div>
+
+                            <p>
+                                @(!string.IsNullOrWhiteSpace(item.StoryEn) &&
+                                                            item.StoryEn.Length > 120
+                                                            ? item.StoryEn.Substring(0, 120) + "..."
+                                                            : item.StoryEn)
+                        </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                        }
+
+            </div>
+
+            <div class="text-center mt-4">
+
+                <a href="/testimonials"
+                   class="btn btn-primary">
+                    View All Success Stories
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+}
+
+<!-- Why Choose Us -->
+<section class="py-5 bg-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2>Why Choose Us?</h2>
+            <p>Complete medical tourism support from inquiry to recovery</p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Medical Visa Assistance</h5>
+                        <p>We help patients with smooth medical visa guidance and documentation support.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Hospital & Doctor Selection</h5>
+                        <p>Find the right specialist and hospital based on treatment needs and budget.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Arabic & Multilingual Support</h5>
+                        <p>Translation and interpretation support for international patients and families.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- How Do We Work -->
+<section class="py-5" style="background:#eef7fb;">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2>How do we work?</h2>
+            <p>Simple steps to start your medical journey with us</p>
+        </div>
+
+        <div class="row g-4 text-center">
+
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="display-5 mb-3">☎️</div>
+                        <h5>Contact Us</h5>
+                        <p>Share your medical case details and our team will contact you.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="display-5 mb-3">📋</div>
+                        <h5>Get Medical Opinion</h5>
+                        <p>Receive doctor opinion and treatment estimate from hospitals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="display-5 mb-3">✈️</div>
+                        <h5>Travel Support</h5>
+                        <p>We assist with visa, airport pickup, hotel and appointments.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="display-5 mb-3">🏥</div>
+                        <h5>Treatment & Follow Up</h5>
+                        <p>Get treated and stay connected with us for follow-up support.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/PublicInquiry/Contact" class="btn btn-danger btn-lg">
+                Get Started
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Services Cover Every Need -->
+<section class="py-5">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2>Our Services Cover Every Need</h2>
+            <p>End-to-end assistance for international patients</p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Medical Visa Assistance</h5>
+                        <p>Guidance for medical visa process, documents and travel planning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Airport Pickup</h5>
+                        <p>Safe pickup and transfer from airport to hospital or accommodation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Accommodation Support</h5>
+                        <p>Budget-friendly stay options near hospitals for patients and families.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Translator Support</h5>
+                        <p>Arabic and multilingual support during consultation and treatment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Hospital Appointment</h5>
+                        <p>Book appointments with top hospitals and experienced specialists.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5>Follow-up Care</h5>
+                        <p>Post-treatment coordination and follow-up assistance after discharge.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Updates and Blogs -->
+<section class="py-5 bg-light">
+    <div class="container">
+
+        <div class="row g-5">
+
+            <div class="col-lg-4">
+                <h2 class="mb-4">Updates and Events</h2>
+
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5>International Patient Support Camp</h5>
+                        <p>Consult senior doctors and medical coordinators for treatment planning.</p>
+                        <a href="/PublicInquiry/Contact" class="btn btn-outline-primary">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <h2 class="mb-4">Latest Blogs</h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-primary">
+                            <div class="card-body">
+                                <small class="text-muted">Published On: 20 May 2026</small>
+                                <h5 class="mt-2">How Medical Tourism Helps International Patients</h5>
+                                <p>Understand how patients can access affordable treatment abroad.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-primary">
+                            <div class="card-body">
+                                <small class="text-muted">Published On: 27 Apr 2026</small>
+                                <h5 class="mt-2">Choosing the Right Hospital in India</h5>
+                                <p>Important points before selecting a hospital for treatment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-primary">
+                            <div class="card-body">
+                                <small class="text-muted">Published On: 01 Apr 2026</small>
+                                <h5 class="mt-2">Medical Visa Process for International Patients</h5>
+                                <p>Documents and steps required for medical travel support.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-primary">
+                            <div class="card-body">
+                                <small class="text-muted">Published On: 31 Mar 2026</small>
+                                <h5 class="mt-2">Why India is Preferred for Advanced Treatment</h5>
+                                <p>India offers experienced doctors, advanced hospitals and affordable care.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-danger">
+                        View All Blogs
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FAQ Section -->
+@if (Model.Faqs != null && Model.Faqs.Any())
+{
+    <section class="py-5">
+        <div class="container">
+
+            <div class="mb-4">
+                <h2>Frequently Asked Questions (FAQ’s)</h2>
+            </div>
+
+            <div class="accordion" id="homeFaqAccordion">
+
+                @{
+                    int faqIndex = 1;
+                }
+
+                @foreach (var faq in Model.Faqs)
+                {
+                    var faqId = "faq" + faqIndex;
+
+                    <div class="accordion-item mb-3 border-primary">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-semibold"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#@faqId">
+                                @faq.QuestionEn
+                            </button>
+                        </h2>
+
+                        <div id="@faqId"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#homeFaqAccordion">
+                            <div class="accordion-body">
+                                @Html.Raw(faq.AnswerEn)
+                            </div>
+                        </div>
+                    </div>
+
+                    faqIndex++;
+                }
+
+            </div>
+
+        </div>
+    </section>
+}
+
+<!-- CTA -->
+<section class="bg-primary text-white py-5">
+    <div class="container text-center">
+        <h2>Need Medical Consultation?</h2>
+        <p class="mb-4">Submit your case and our team will contact you.</p>
+
+        <a href="/PublicInquiry/Contact" class="btn btn-light btn-lg">
+            Submit Inquiry
+        </a>
+    </div>
+</section>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/979690012794"
+   target="_blank"
+   style="position:fixed;bottom:25px;right:25px;z-index:9999;"
+   class="btn btn-success rounded-circle shadow">
+    WhatsApp
+</a>

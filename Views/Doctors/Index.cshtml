@@ -1,0 +1,85 @@
+﻿@model IEnumerable<MEDICINE.WEB.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h1 class="fw-bold">Doctors</h1>
+        <p class="text-muted">Find experienced doctors and medical specialists</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            @foreach (var doctor in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0">
+
+                        @if (!string.IsNullOrEmpty(doctor.ImagePath))
+                        {
+                            <img src="@doctor.ImagePath"
+                                 class="card-img-top"
+                                 style="height:260px;object-fit:cover;" />
+                        }
+
+                        <div class="card-body">
+
+                            @if (doctor.IsFeatured)
+                            {
+                                <span class="badge bg-success mb-2">Featured</span>
+                            }
+
+                            <h5 class="fw-bold">@doctor.FullNameEn</h5>
+
+                            @if (!string.IsNullOrEmpty(doctor.DesignationEn))
+                            {
+                                <p class="text-primary mb-1">@doctor.DesignationEn</p>
+                            }
+
+                            @if (!string.IsNullOrEmpty(doctor.Hospital?.NameEn))
+                            {
+                                <p class="text-muted mb-1">@doctor.Hospital.NameEn</p>
+                            }
+
+                            <p class="mb-2">
+                                Experience: @doctor.ExperienceYears Years
+                            </p>
+
+                            <p class="text-muted mb-3">
+                                @doctor.City?.NameEn
+                                @if (doctor.City != null && doctor.Country != null)
+                                {
+                                    <span>, </span>
+                                }
+                                @doctor.Country?.NameEn
+                            </p>
+
+                            @if (!string.IsNullOrEmpty(doctor.Slug))
+                            {
+                                <a href="/doctors/@doctor.Slug" class="btn btn-primary">
+                                    View Profile
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Doctors"
+                                   asp-action="Details"
+                                   asp-route-id="@doctor.Id"
+                                   class="btn btn-primary">
+                                    View Profile
+                                </a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>

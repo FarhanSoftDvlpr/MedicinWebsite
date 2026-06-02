@@ -1,0 +1,115 @@
+﻿@model MEDICINE.WEB.ViewModels.Treatments.TreatmentDetailsViewModel
+
+@{
+    ViewData["Title"] = Model.Treatment.NameEn;
+}
+
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <h1 class="fw-bold">@Model.Treatment.NameEn</h1>
+
+        @if (!string.IsNullOrEmpty(Model.Treatment.ShortDescriptionEn))
+        {
+            <p class="lead">@Model.Treatment.ShortDescriptionEn</p>
+        }
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
+
+        <div class="row g-4">
+
+            <div class="col-lg-8">
+
+                @if (!string.IsNullOrEmpty(Model.Treatment.ImagePath))
+                {
+                    <img src="@Model.Treatment.ImagePath"
+                         class="img-fluid rounded shadow-sm mb-4" />
+                }
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        @Html.Raw(Model.Treatment.DescriptionEn)
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="card shadow-sm border-0 sticky-top" style="top:90px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Need Treatment Cost Estimate?</h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form asp-controller="PublicInquiry"
+                              asp-action="QuickSubmit"
+                              method="post">
+
+                            @Html.AntiForgeryToken()
+
+                            <input type="hidden" name="TreatmentId" value="@Model.Treatment.Id" />
+                            <input type="hidden" name="SourcePage" value="Treatment Details - @Model.Treatment.NameEn" />
+
+                            <div class="mb-3">
+                                <label class="form-label">Patient Name</label>
+                                <input type="text"
+                                       name="PatientName"
+                                       class="form-control"
+                                       required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="text"
+                                       name="MobileNumber"
+                                       class="form-control"
+                                       required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email"
+                                       name="Email"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea name="Message"
+                                          class="form-control"
+                                          rows="3"
+                                          placeholder="Tell us about your medical condition"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                Request Cost Estimate
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

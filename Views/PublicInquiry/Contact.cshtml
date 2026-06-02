@@ -1,0 +1,142 @@
+﻿@model MEDICINE.WEB.ViewModels.PublicInquiryViewModel
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">Contact Us</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    <form asp-controller="PublicInquiry" asp-action="Contact" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="SourcePage" />
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="PatientName" class="form-label"></label>
+                <input asp-for="PatientName" class="form-control" />
+                <span asp-validation-for="PatientName" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="MobileNumber" class="form-label"></label>
+                <input asp-for="MobileNumber" class="form-control" />
+                <span asp-validation-for="MobileNumber" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="TreatmentId" class="form-label">Treatment</label>
+                <select asp-for="TreatmentId" asp-items="Model.Treatments" class="form-select">
+                    <option value="">Select Treatment</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="CountryId" class="form-label"></label>
+                <select asp-for="CountryId" asp-items="Model.Countries" class="form-select" id="CountryId">
+                    <option value="">Select Country</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="StateId" class="form-label"></label>
+                <select asp-for="StateId" class="form-select" id="StateId">
+                    <option value="">Select State</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="CityId" class="form-label"></label>
+                <select asp-for="CityId" class="form-select" id="CityId">
+                    <option value="">Select City</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="HospitalId" class="form-label">Hospital</label>
+                <select asp-for="HospitalId" asp-items="Model.Hospitals" class="form-select">
+                    <option value="">Select Hospital</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="DoctorId" class="form-label">Doctor</label>
+                <select asp-for="DoctorId" asp-items="Model.Doctors" class="form-select">
+                    <option value="">Select Doctor</option>
+                </select>
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <label asp-for="Message" class="form-label"></label>
+                <textarea asp-for="Message" class="form-control" rows="4"></textarea>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Submit Inquiry
+        </button>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $("#CountryId").change(function () {
+
+            var countryId = $(this).val();
+
+            $("#StateId").empty().append('<option value="">Select State</option>');
+            $("#CityId").empty().append('<option value="">Select City</option>');
+
+            if (countryId) {
+                $.getJSON('/PublicInquiry/GetStatesByCountry', { countryId: countryId }, function (data) {
+                    $.each(data, function (i, item) {
+                        $("#StateId").append('<option value="' + item.id + '">' + item.name + '</option>');
+                    });
+                });
+            }
+        });
+
+        $("#StateId").change(function () {
+
+            var stateId = $(this).val();
+
+            $("#CityId").empty().append('<option value="">Select City</option>');
+
+            if (stateId) {
+                $.getJSON('/PublicInquiry/GetCitiesByState', { stateId: stateId }, function (data) {
+                    $.each(data, function (i, item) {
+                        $("#CityId").append('<option value="' + item.id + '">' + item.name + '</option>');
+                    });
+                });
+            }
+        });
+    </script>
+}

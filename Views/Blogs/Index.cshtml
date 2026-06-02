@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MEDICINE.WEB.ViewModels.Blogs.PublicBlogListViewModel>
+
+@{
+    ViewData["Title"] = "Blogs";
+}
+
+<section class="bg-light py-5">
+    <div class="container">
+        <h1 class="fw-bold text-center">
+            Medical Tourism Blogs
+        </h1>
+
+        <p class="text-center text-muted">
+            Latest healthcare, treatment and medical tourism articles.
+        </p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var blog in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        @if (!string.IsNullOrWhiteSpace(blog.ImagePath))
+                        {
+                            <img src="@blog.ImagePath"
+                                 class="card-img-top"
+                                 style="height:220px;object-fit:cover;" />
+                        }
+
+                        <div class="card-body">
+
+                            @if (!string.IsNullOrWhiteSpace(blog.CategoryNameEn))
+                            {
+                                <span class="badge bg-primary mb-2">
+                                    @blog.CategoryNameEn
+                                </span>
+                            }
+
+                            <h5 class="fw-bold">
+                                @blog.TitleEn
+                            </h5>
+
+                            <p class="text-muted small">
+                                @blog.PublishedAt.ToString("dd MMM yyyy")
+                            </p>
+
+                            @if (!string.IsNullOrWhiteSpace(blog.ShortDescriptionEn))
+                            {
+                                <p>
+                                    @blog.ShortDescriptionEn
+                                </p>
+                            }
+
+                        </div>
+
+                        <div class="card-footer bg-white border-0">
+
+                            <a href="/blog/@blog.Slug"
+                               class="btn btn-primary">
+                                Read More
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+</section>

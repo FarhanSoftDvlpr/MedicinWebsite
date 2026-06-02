@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MEDICINE.WEB.ViewModels.MedicalServices.PublicMedicalServiceListViewModel>
+
+@{
+    ViewData["Title"] = "Medical Tourism Services";
+}
+
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <h1 class="fw-bold">Medical Tourism Services</h1>
+        <p class="text-muted">
+            Complete support for international patients from inquiry to recovery.
+        </p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="row g-4">
+
+            @foreach (var service in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="card h-100 shadow-sm border-0">
+
+                        @if (!string.IsNullOrWhiteSpace(service.ImagePath))
+                        {
+                            <img src="@service.ImagePath"
+                                 class="card-img-top"
+                                 style="height:220px;object-fit:cover;"
+                                 alt="@service.TitleEn" />
+                        }
+
+                        <div class="card-body">
+
+                            @if (!string.IsNullOrWhiteSpace(service.IconClass))
+                            {
+                                <div class="mb-3">
+                                    <i class="@service.IconClass fa-2x text-primary"></i>
+                                </div>
+                            }
+
+                            <h5 class="fw-bold">
+                                @service.TitleEn
+                            </h5>
+
+                            @if (!string.IsNullOrWhiteSpace(service.ShortDescriptionEn))
+                            {
+                                <p>
+                                    @service.ShortDescriptionEn
+                                </p>
+                            }
+
+                            <a href="/service/@service.Slug"
+                               class="btn btn-outline-primary">
+                                Read More
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+</section>

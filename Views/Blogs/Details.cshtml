@@ -1,0 +1,79 @@
+﻿@model MEDICINE.WEB.ViewModels.Blogs.PublicBlogDetailViewModel
+
+@{
+    ViewData["Title"] = Model.MetaTitleEn ?? Model.TitleEn;
+}
+
+<section class="bg-light py-5">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            @if (!string.IsNullOrWhiteSpace(Model.CategoryNameEn))
+            {
+                <span class="badge bg-primary mb-3">
+                    @Model.CategoryNameEn
+                </span>
+            }
+
+            <h1 class="fw-bold">
+                @Model.TitleEn
+            </h1>
+
+            <p class="text-muted">
+                Published on @Model.PublishedAt.ToString("dd MMM yyyy")
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="py-5">
+
+    <div class="container">
+
+        @if (!string.IsNullOrWhiteSpace(Model.ImagePath))
+        {
+            <div class="mb-4 text-center">
+
+                <img src="@Model.ImagePath"
+                     class="img-fluid rounded shadow"
+                     style="max-height:500px;" />
+
+            </div>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.ShortDescriptionEn))
+        {
+            <div class="alert alert-light border">
+                @Model.ShortDescriptionEn
+            </div>
+        }
+
+        <div class="blog-content">
+
+            @Html.Raw(Model.DescriptionEn)
+
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.DescriptionAr))
+        {
+            <hr class="my-5" />
+
+            <h3 class="mb-4 text-end">
+                العربية
+            </h3>
+
+            <div dir="rtl" style="text-align:right;">
+
+                @Html.Raw(Model.DescriptionAr)
+
+            </div>
+        }
+
+    </div>
+
+</section>

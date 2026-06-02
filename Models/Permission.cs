@@ -4,8 +4,6 @@ namespace MEDICINE.WEB.Models
 {
     public class Permission : BaseEntity
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public string PermissionKey { get; set; }
@@ -16,10 +14,12 @@ namespace MEDICINE.WEB.Models
 
         public bool IsActive { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-
         // Navigation Property
 
-        public ICollection<RolePermission> RolePermissions { get; set; }
+        public ICollection<RolePermission> RolePermissions
+        {
+            get;
+            set;
+        } = new List<RolePermission>();
     }
 }

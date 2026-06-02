@@ -1,0 +1,51 @@
+﻿@model List<MEDICINE.WEB.ViewModels.Menus.PublicMenuViewModel>
+
+<ul class="navbar-nav ms-auto">
+
+    @foreach (var menu in Model)
+    {
+        if (menu.ChildMenus != null && menu.ChildMenus.Any())
+        {
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle"
+                   href="@menu.Url"
+                   role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false"
+                   target="@(menu.OpenInNewTab ? "_blank" : "_self")">
+                    @menu.TitleEn
+                </a>
+
+                <ul class="dropdown-menu">
+
+                    @foreach (var child in menu.ChildMenus)
+                    {
+                        <li>
+                            <a class="dropdown-item"
+                               href="@child.Url"
+                               target="@(child.OpenInNewTab ? "_blank" : "_self")">
+                                @child.TitleEn
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+
+                <a class="nav-link"
+                   href="@menu.Url"
+                   target="@(menu.OpenInNewTab ? "_blank" : "_self")">
+                    @menu.TitleEn
+                </a>
+
+            </li>
+        }
+    }
+
+</ul>

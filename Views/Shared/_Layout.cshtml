@@ -1,13 +1,212 @@
-﻿@using MEDICINE.WEB.Services.Admin
-@inject AdminNavigationService NavigationService
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>MEDICINE WEBSITE</title>
+    <style>
+        .quick-quote-box {
+            position: fixed;
+            right: 25px;
+            top: 160px;
+            width: 360px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 18px;
+            z-index: 9999;
+        }
+
+        @@media (max-width: 991px) {
+            .quick-quote-box {
+                position: static;
+                width: auto;
+                margin: 20px;
+            }
+        }
+    </style>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - MEDICINE WEBSITE</title>
+
+    @if (ViewData["MetaDescription"] != null)
+    {
+        <meta name="description" content="@ViewData["MetaDescription"]" />
+    }
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
+
 <body>
 
-    @RenderBody()
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+
+                <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
+                    MEDICINE
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    @await Component.InvokeAsync("PublicMenu")
+                    @* <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Treatments" asp-action="Index">
+                                Treatments
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Hospitals">
+                                Hospitals
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Doctors">
+                                Doctors
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/PublicInquiry/Contact">
+                                Contact Us
+                            </a>
+                        </li>
+
+                    </ul> *@
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+
+        <div class="quick-quote-box shadow">
+            <h4 class="text-center mb-3">Let Us Help You</h4>
+            @await Html.PartialAsync("_QuickQuoteForm")
+        </div>
+    </main>
+
+    @await Component.InvokeAsync("Footer")
+
+    @* <footer class="text-white pt-5 pb-3" style="background:#075f94;">
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-md-3">
+                    <h4>About Us</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Our Services</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Our Offices</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Vision</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Team</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                        <li><a href="/PublicInquiry/Contact" class="text-white text-decoration-none">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h4>For Patients</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/Doctors" class="text-white text-decoration-none">Doctors</a></li>
+                        <li><a href="/Hospitals" class="text-white text-decoration-none">Hospitals</a></li>
+                        <li><a href="/Treatments" class="text-white text-decoration-none">Treatments</a></li>
+                        <li><a href="/PublicInquiry/Contact" class="text-white text-decoration-none">Free Consultation</a></li>
+                    </ul>
+
+                    <h4 class="mt-4">For Partners</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Refer to Us</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Hospital Partnership</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h4>Policy</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Terms of Use</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Editorial Policy</a></li>
+                    </ul>
+
+                    <h4 class="mt-4">Updates</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">News & Updates</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Blogs</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h4>Our Offices</h4>
+
+                    <p class="mb-2">
+                        <strong>India:</strong><br />
+                        MEDICINE Health Services,<br />
+                        Gurgaon, Haryana, India
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>UAE:</strong><br />
+                        Patient Support Coordination Office,<br />
+                        Dubai, United Arab Emirates
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>USA:</strong><br />
+                        International Patient Help Desk
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="mt-5 p-4 rounded" style="background:#ccefff;">
+                <div class="row align-items-center text-dark">
+
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <strong>Email:</strong><br />
+                        support@medicinewebsite.com
+                    </div>
+
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <strong>Phone / WhatsApp:</strong><br />
+                        +91 97969012794
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong>Follow Us:</strong><br />
+                        YouTube | LinkedIn | Facebook | Instagram
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="mb-0">© @DateTime.Now.Year MEDICINE WEBSITE. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer> *@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>

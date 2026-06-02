@@ -1,0 +1,127 @@
+﻿@model MEDICINE.WEB.ViewModels.Footer.FooterViewModel
+
+<footer class="bg-dark text-white pt-5 pb-3">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">
+                    @(Model.CompanyNameEn ?? "MEDICINE")
+                </h5>
+
+                @if (!string.IsNullOrWhiteSpace(Model.AboutTextEn))
+                {
+                    <p class="text-white-50">
+                        @Model.AboutTextEn
+                    </p>
+                }
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">
+                    Contact Info
+                </h5>
+
+                @if (!string.IsNullOrWhiteSpace(Model.AddressEn))
+                {
+                    <p class="text-white-50 mb-2">
+                        <strong>Address:</strong> @Model.AddressEn
+                    </p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.PhoneNumber))
+                {
+                    <p class="text-white-50 mb-2">
+                        <strong>Phone:</strong> @Model.PhoneNumber
+                    </p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.WhatsAppNumber))
+                {
+                    <p class="text-white-50 mb-2">
+                        <strong>WhatsApp:</strong>
+                        <a href="https://wa.me/@Model.WhatsAppNumber"
+                           class="text-white"
+                           target="_blank">
+                            @Model.WhatsAppNumber
+                        </a>
+                    </p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.Email))
+                {
+                    <p class="text-white-50 mb-2">
+                        <strong>Email:</strong>
+                        <a href="mailto:@Model.Email"
+                           class="text-white">
+                            @Model.Email
+                        </a>
+                    </p>
+                }
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">
+                    Follow Us
+                </h5>
+
+                <div class="d-flex gap-2 flex-wrap">
+
+                    @if (!string.IsNullOrWhiteSpace(Model.FacebookUrl))
+                    {
+                        <a href="@Model.FacebookUrl" target="_blank" class="btn btn-outline-light btn-sm">
+                            Facebook
+                        </a>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.InstagramUrl))
+                    {
+                        <a href="@Model.InstagramUrl" target="_blank" class="btn btn-outline-light btn-sm">
+                            Instagram
+                        </a>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.YouTubeUrl))
+                    {
+                        <a href="@Model.YouTubeUrl" target="_blank" class="btn btn-outline-light btn-sm">
+                            YouTube
+                        </a>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.LinkedInUrl))
+                    {
+                        <a href="@Model.LinkedInUrl" target="_blank" class="btn btn-outline-light btn-sm">
+                            LinkedIn
+                        </a>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.TwitterUrl))
+                    {
+                        <a href="@Model.TwitterUrl" target="_blank" class="btn btn-outline-light btn-sm">
+                            Twitter/X
+                        </a>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="border-secondary" />
+
+        <div class="text-center text-white-50">
+            @if (!string.IsNullOrWhiteSpace(Model.CopyrightTextEn))
+            {
+                @Model.CopyrightTextEn
+            }
+            else
+            {
+                <span>© @DateTime.Now.Year MEDICINE. All rights reserved.</span>
+            }
+        </div>
+
+    </div>
+
+</footer>

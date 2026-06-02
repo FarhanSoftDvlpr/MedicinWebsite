@@ -1,0 +1,71 @@
+﻿@model MEDICINE.WEB.ViewModels.MedicalServices.PublicMedicalServiceDetailViewModel
+
+@{
+    ViewData["Title"] = Model.MetaTitleEn ?? Model.TitleEn;
+}
+
+<section class="bg-light py-5">
+    <div class="container text-center">
+
+        @if (!string.IsNullOrWhiteSpace(Model.IconClass))
+        {
+            <div class="mb-3">
+                <i class="@Model.IconClass fa-3x text-primary"></i>
+            </div>
+        }
+
+        <h1 class="fw-bold">
+            @Model.TitleEn
+        </h1>
+
+        @if (!string.IsNullOrWhiteSpace(Model.ShortDescriptionEn))
+        {
+            <p class="text-muted">
+                @Model.ShortDescriptionEn
+            </p>
+        }
+
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        @if (!string.IsNullOrWhiteSpace(Model.ImagePath))
+        {
+            <div class="text-center mb-4">
+                <img src="@Model.ImagePath"
+                     class="img-fluid rounded shadow"
+                     style="max-height:450px;object-fit:cover;"
+                     alt="@Model.TitleEn" />
+            </div>
+        }
+
+        <div class="service-content">
+            @Html.Raw(Model.DescriptionEn)
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.DescriptionAr))
+        {
+            <hr class="my-5" />
+
+            <div dir="rtl" style="text-align:right;">
+                <h2>@Model.TitleAr</h2>
+                @Html.Raw(Model.DescriptionAr)
+            </div>
+        }
+
+        <div class="mt-5 text-center">
+            <a href="/PublicInquiry/Contact"
+               class="btn btn-primary btn-lg">
+                Request This Service
+            </a>
+
+            <a href="/services"
+               class="btn btn-outline-secondary btn-lg">
+                Back to Services
+            </a>
+        </div>
+
+    </div>
+</section>
